@@ -29,7 +29,7 @@
       </a>
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Logout</a>
+        <a class="dropdown-item" href="<?= site_url('/logout')?>"> <i class="fas fa-user"></i> Logout</a>
       </div>
     </div>
   <?php } ?>

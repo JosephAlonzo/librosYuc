@@ -17,6 +17,7 @@ class BookController extends BaseController
 	public $favouriteModel  = null;
 	public $historyModel    = null;
 	public $request = null;
+	public $users = [];
 	
 	public function __construct(){
 		$this->userModel = new UserModel($db);
@@ -25,23 +26,21 @@ class BookController extends BaseController
 		$this->wishlistModel = new WishlistModel($db);
 		$this->favouriteModel = new FavouriteModel($db);
 		$this->historyModel = new HistoryModel($db);
+		parent::__construct();
 		$this->request = \Config\Services::request();
-	}
-	public function index()
-	{	
 		$id = $this->session->get('id');
 		$login = $this->session->get('login');
 		if($login == null or empty($login) ){
-			$users = [];
+			$this->users = [];
 		}
 		else {
-			$users = array('users'=> $this->userModel->find($id));
+			$this->users = array('users'=> $this->userModel->find($id));
 		}
-		
-		$books = array('books'=> $this->bookModel->findAll());
-
-		
-		$structure = view('includes/header',$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+	}
+	public function index()
+	{	
+		$books = array('books'=> $this->bookModel->findAll());	
+		$structure = view('includes/header',$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 	public function buybooks()
@@ -58,119 +57,99 @@ class BookController extends BaseController
 	
 	public function allBooks()
 	{	
-		$id = $this->session->get('id');
-
-		$users = array('users'=> $this->userModel->find($id));
 		$books = array('books'=> $this->bookModel->findAll());
 		
-		$structure = view('includes/header' ,$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 
 	public function mostRecent()
 	{	
-		$id = $this->session->get('id');
-		$users = array('users'=> $this->userModel->find($id));
 		$books = $this->bookModel
 				->orderBy('added_at', 'ASC')
 				->findAll();
 		$books = array('books'=> $books);
 		
-		$structure = view('includes/header' ,$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 
 	public function mostPopular()
 	{	
-		$id = $this->session->get('id');
-		$users = array('users'=> $this->userModel->find($id));
 		$books = $this->bookModel
 				->orderBy('rate', 'DESC')
 				->findAll();
 		$books = array('books'=> $books);
 		
-		$structure = view('includes/header' ,$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 
 	public function mostRead()
 	{	
-		$id = $this->session->get('id');
-		$users = array('users'=> $this->userModel->find($id));
 		$nowreading = $this->nowreadingModel
 							->select( '* , count(id_book) as count ')
 							->join('books', 'books.id = nowreading.id_book')
 							->groupBy("id_book")
 							->findAll(10);
 		$books = array('books'=> $nowreading);
-		$structure = view('includes/header' ,$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 
 	public function bestOfList()
 	{	
-		$id = $this->session->get('id');
-		$users = array('users'=> $this->userModel->find($id));
 		$books = $this->bookModel
 				->orderBy('rate', 'DESC')
 				->findAll(10);
 		$books = array('books'=> $books);
 		
-		$structure = view('includes/header' ,$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 
 	public function novels()
 	{	
-		$id = $this->session->get('id');
-		$users = array('users'=> $this->userModel->find($id));
 		$books = $this->bookModel
 				->like('genero', 'novela')
 				->findAll();
 		$books = array('books'=> $books);
 		
-		$structure = view('includes/header' ,$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 
 	public function nonFiction()
 	{	
-		$id = $this->session->get('id');
-		$users = array('users'=> $this->userModel->find($id));
 		$books = $this->bookModel
 				->notLike('genero', 'ficcion')
 				->findAll();
 		$books = array('books'=> $books);
 		
-		$structure = view('includes/header' ,$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 
 	public function freeBooks()
-	{	
-		$id = $this->session->get('id');
-		$users = array('users'=> $this->userModel->find($id));
+	{			
 		$books = $this->bookModel
 				->where('precio', 0)
 				->findAll();
 		$books = array('books'=> $books);
 		
-		$structure = view('includes/header' ,$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 
 	public function searchBooks()
 	{	
 		$search = $this->request->getPostGet('search');
-
-		$id = $this->session->get('id');
-		$users = array('users'=> $this->userModel->find($id));
 		$books = $this->bookModel
 				->like('nombre', $search)
 				->findAll();
 		$books = array('books'=> $books);
 		
-		$structure = view('includes/header' ,$users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
+		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
 
@@ -194,10 +173,9 @@ class BookController extends BaseController
 		$wishlist = ($wishlist)? $wishlist[0] : FALSE;
 		$favourite = ($favourite)? $favourite[0] : FALSE;
 
-		$users = array('users'=> $this->userModel->find($id) );
 		$books = array('books'=> $this->bookModel->find($idBook), 'nowreading' => $nowreading, 'wishlist' => $wishlist, 'favourite' => $favourite);
 		
-		$structure = view('includes/header',$users) . view('includes/nav') . view('pages/buybooks', $books) . view('includes/footer');
+		$structure = view('includes/header',$this->$users) . view('includes/nav') . view('pages/buybooks', $books) . view('includes/footer');
 		return $structure;
 	}
 

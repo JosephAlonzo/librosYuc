@@ -65,6 +65,7 @@ $routes->get('/history', 'HistoryController::history');
 // User controller
 $routes->get('/login', 'UserController::index');
 $routes->post('/login', 'UserController::index');
+$routes->get('/logout', 'UserController::logout');
 
 
 /**

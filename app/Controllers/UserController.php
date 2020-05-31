@@ -20,6 +20,11 @@ class UserController extends BaseController
 		    return view('pages/login');
         }
     }
+    public function logout()
+    {   
+        $this->session->destroy();
+        return redirect()->to(site_url('/browse')); 
+    }
 
 	public function login()
     {   

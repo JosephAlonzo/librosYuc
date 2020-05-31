@@ -263,3 +263,92 @@ CRITICAL - 2020-05-31 05:35:48 --> Undefined variable: users
 #6 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #7 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
 #8 {main}
+CRITICAL - 2020-05-31 12:01:43 --> Undefined index: foto
+#0 C:\wamp64\www\proyectoLibreria\app\Views\includes\header.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\wamp64\\www\\p...', 28, Array)
+#1 C:\wamp64\www\proyectoLibreria\system\View\View.php(235): include('C:\\wamp64\\www\\p...')
+#2 C:\wamp64\www\proyectoLibreria\system\Common.php(175): CodeIgniter\View\View->render('includes/header', Array, NULL)
+#3 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(106): view('includes/header', Array)
+#4 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(838): App\Controllers\BookController->mostRead()
+#5 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(335): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\BookController))
+#6 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-05-31 12:02:03 --> Undefined index: foto
+#0 C:\wamp64\www\proyectoLibreria\app\Views\includes\header.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\wamp64\\www\\p...', 28, Array)
+#1 C:\wamp64\www\proyectoLibreria\system\View\View.php(235): include('C:\\wamp64\\www\\p...')
+#2 C:\wamp64\www\proyectoLibreria\system\Common.php(175): CodeIgniter\View\View->render('includes/header', Array, NULL)
+#3 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(119): view('includes/header', Array)
+#4 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(838): App\Controllers\BookController->bestOfList()
+#5 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(335): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\BookController))
+#6 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-05-31 12:02:34 --> Undefined index: foto
+#0 C:\wamp64\www\proyectoLibreria\app\Views\includes\header.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\wamp64\\www\\p...', 28, Array)
+#1 C:\wamp64\www\proyectoLibreria\system\View\View.php(235): include('C:\\wamp64\\www\\p...')
+#2 C:\wamp64\www\proyectoLibreria\system\Common.php(175): CodeIgniter\View\View->render('includes/header', Array, NULL)
+#3 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(106): view('includes/header', Array)
+#4 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(838): App\Controllers\BookController->mostRead()
+#5 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(335): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\BookController))
+#6 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-05-31 12:05:31 --> Call to a member function get() on null
+#0 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(813): App\Controllers\BookController->__construct()
+#1 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(330): CodeIgniter\CodeIgniter->createController()
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-05-31 12:05:54 --> Call to a member function get() on null
+#0 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(813): App\Controllers\BookController->__construct()
+#1 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(330): CodeIgniter\CodeIgniter->createController()
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-05-31 12:09:56 --> Call to a member function get() on null
+#0 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(813): App\Controllers\BookController->__construct()
+#1 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(330): CodeIgniter\CodeIgniter->createController()
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-05-31 12:10:42 --> Cannot call constructor
+#0 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(813): App\Controllers\BookController->__construct()
+#1 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(330): CodeIgniter\CodeIgniter->createController()
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-05-31 12:11:36 --> Too few arguments to function App\Controllers\BaseController::initController(), 0 passed in C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php on line 29 and exactly 3 expected
+#0 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(29): App\Controllers\BaseController->initController()
+#1 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(813): App\Controllers\BookController->__construct()
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(330): CodeIgniter\CodeIgniter->createController()
+#3 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-05-31 12:12:15 --> Undefined variable: session
+#0 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(32): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\p...', 32, Array)
+#1 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(813): App\Controllers\BookController->__construct()
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(330): CodeIgniter\CodeIgniter->createController()
+#3 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-05-31 12:17:04 --> Undefined variable: users
+#0 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\p...', 37, Array)
+#1 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(813): App\Controllers\BookController->__construct()
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(330): CodeIgniter\CodeIgniter->createController()
+#3 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-05-31 12:17:54 --> Undefined variable: userModel
+#0 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\p...', 37, Array)
+#1 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(813): App\Controllers\BookController->__construct()
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(330): CodeIgniter\CodeIgniter->createController()
+#3 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-05-31 12:18:03 --> Undefined variable: users
+#0 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\p...', 37, Array)
+#1 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(813): App\Controllers\BookController->__construct()
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(330): CodeIgniter\CodeIgniter->createController()
+#3 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
