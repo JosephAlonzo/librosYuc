@@ -36,7 +36,7 @@
   </header>
   <!--sidebar start-->
   <div class="sidebar">
-    <?php if ($users['tipo'] == 0 OR empty($users) ) {?>
+    <?php if ( (isset($users) and $users['tipo']) == 0 OR empty($users) ) {?>
       <section class="d-flex align-content-center align-items-center justify-content-center">
           <button href="" class="btn btn-primary" id="addBook"><i class="fas fa-plus"></i>Agregar libro</button>
       </section>
