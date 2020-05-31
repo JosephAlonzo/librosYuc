@@ -168,10 +168,13 @@ class BookController extends BaseController
 							->where('id_user', $id)
 							->where('id_book', $idBook)
 							->find();
-		$this->addHistory($id, $idBook);
+		if($id != null){
+			$this->addHistory($id, $idBook);
+		}
 		$nowreading = ($nowreading)? $nowreading[0] : FALSE;
 		$wishlist = ($wishlist)? $wishlist[0] : FALSE;
 		$favourite = ($favourite)? $favourite[0] : FALSE;
+		
 		$books = array('books'=> $this->bookModel->find($idBook), 'nowreading' => $nowreading, 'wishlist' => $wishlist, 'favourite' => $favourite);
 		
 		$structure = view('includes/header',$this->users) . view('includes/nav') . view('pages/buybooks', $books) . view('includes/footer');

@@ -359,3 +359,53 @@ CRITICAL - 2020-05-31 12:27:53 --> Undefined variable: users
 #3 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #4 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
 #5 {main}
+CRITICAL - 2020-05-31 12:32:11 --> Column 'id_user' cannot be null
+#0 C:\wamp64\www\proyectoLibreria\system\Database\MySQLi\Connection.php(329): mysqli->query('INSERT INTO `hi...')
+#1 C:\wamp64\www\proyectoLibreria\system\Database\BaseConnection.php(709): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hi...')
+#2 C:\wamp64\www\proyectoLibreria\system\Database\BaseConnection.php(637): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hi...')
+#3 C:\wamp64\www\proyectoLibreria\system\Database\BaseBuilder.php(1835): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hi...', Array, false)
+#4 C:\wamp64\www\proyectoLibreria\system\Model.php(715): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\proyectoLibreria\system\Model.php(538): CodeIgniter\Model->insert(Array, false)
+#6 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(201): CodeIgniter\Model->save(Array)
+#7 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(171): App\Controllers\BookController->addHistory(NULL, '1')
+#8 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(838): App\Controllers\BookController->seeBook()
+#9 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(335): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\BookController))
+#10 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2020-05-31 12:32:24 --> Column 'id_user' cannot be null
+#0 C:\wamp64\www\proyectoLibreria\system\Database\MySQLi\Connection.php(329): mysqli->query('INSERT INTO `hi...')
+#1 C:\wamp64\www\proyectoLibreria\system\Database\BaseConnection.php(709): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hi...')
+#2 C:\wamp64\www\proyectoLibreria\system\Database\BaseConnection.php(637): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hi...')
+#3 C:\wamp64\www\proyectoLibreria\system\Database\BaseBuilder.php(1835): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hi...', Array, false)
+#4 C:\wamp64\www\proyectoLibreria\system\Model.php(715): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\proyectoLibreria\system\Model.php(538): CodeIgniter\Model->insert(Array, false)
+#6 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(201): CodeIgniter\Model->save(Array)
+#7 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(171): App\Controllers\BookController->addHistory(NULL, '1')
+#8 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(838): App\Controllers\BookController->seeBook()
+#9 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(335): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\BookController))
+#10 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2020-05-31 12:33:50 --> Column 'id_user' cannot be null
+#0 C:\wamp64\www\proyectoLibreria\system\Database\MySQLi\Connection.php(329): mysqli->query('INSERT INTO `hi...')
+#1 C:\wamp64\www\proyectoLibreria\system\Database\BaseConnection.php(709): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hi...')
+#2 C:\wamp64\www\proyectoLibreria\system\Database\BaseConnection.php(637): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hi...')
+#3 C:\wamp64\www\proyectoLibreria\system\Database\BaseBuilder.php(1835): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hi...', Array, false)
+#4 C:\wamp64\www\proyectoLibreria\system\Model.php(715): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\proyectoLibreria\system\Model.php(538): CodeIgniter\Model->insert(Array, false)
+#6 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(202): CodeIgniter\Model->save(Array)
+#7 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(172): App\Controllers\BookController->addHistory(NULL, '1')
+#8 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(838): App\Controllers\BookController->seeBook()
+#9 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(335): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\BookController))
+#10 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2020-05-31 12:39:03 --> syntax error, unexpected '}', expecting end of file
+#0 C:\wamp64\www\proyectoLibreria\system\Common.php(175): CodeIgniter\View\View->render('pages/buybooks', Array, NULL)
+#1 C:\wamp64\www\proyectoLibreria\app\Controllers\BookController.php(180): view('pages/buybooks', Array)
+#2 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(838): App\Controllers\BookController->seeBook()
+#3 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(335): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\BookController))
+#4 C:\wamp64\www\proyectoLibreria\system\CodeIgniter.php(245): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\proyectoLibreria\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}

@@ -11,9 +11,10 @@
             </div>
             <div class="overcard2 ">
                 <div class="options-browse d-flex flex-column align-items-center justify-content-center">
-                    <a href=""><i class="fas fa-book"></i>Agregar a lista "leyendo ahora"</a>
-                    <a href=""><i class="fas fa-star"></i>Agregar a mis favoritos</a>
-                    <a href=""><i class="fas fa-list"></i>Agregar a lista de deseos</a> 
+                    <p>Agregar a: </p>
+                    <a href=""><i class="fas fa-book"></i></a>
+                    <a href=""><i class="fas fa-star"></i></a>
+                    <a href=""><i class="fas fa-list"></i></a> 
                 </div>
             </div>
             <img src="<?php echo base_url("public/src/img/".$book['foto']."")?>" class="card-img-top" alt="imagen de libro">

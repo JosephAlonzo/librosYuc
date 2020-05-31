@@ -21,6 +21,7 @@
         <p>
             <?php echo $books['descripcion'] ?>
         </p>
+        <?php if( !empty($users)){?>
         <div class="options-buybooks">
             <span class="field-tip">
                 <?php ?>
@@ -36,6 +37,7 @@
                 <span class="tip-content">Agregar a mi lista de libros deseados.</span>
             </span>
         </div>
+        <?php }?>
     </div>
     <div class="col-md-3 buybooks-prices">
         <h3>Precio: </h3>

@@ -22,7 +22,6 @@
         <a href="">Our Support</a> 
       </div>
     
-
     <div class="dropdown">
       <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <img src="<?php echo base_url("public/src/img/".$users['foto']."")?>" alt="user image" class="border border-white rounded-circle"> <?= $users['nombre'] . ' ' . $users['apellido']?> <i class="fas fa-chevron-circle-down"></i>
@@ -32,7 +31,13 @@
         <a class="dropdown-item" href="<?= site_url('/logout')?>"> <i class="fas fa-user"></i> Logout</a>
       </div>
     </div>
-  <?php } ?>
+  <?php } else{?>
+    <div class="dropdown">
+      <a class="btn btn-primary " href="<?= site_url('/login')?>" style="padding-top: 11px;border-radius: 0px;">
+        <i class="fas fa-user"></i> Iniciar sesión
+      </a>
+    </div>
+  <?php }?>
   </header>
   <!--sidebar start-->
   <div class="sidebar">
