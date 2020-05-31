@@ -1,0 +1,347 @@
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('../fonts/SFProDisplay-Regular.ttf');
+}
+body{
+	margin: 0;
+	padding: 0;
+}
+header{
+	position: fixed;
+	background-color: #30374A;
+	width: 100%;
+	height: 40px;
+	transition: 0.5s;
+	z-index: 2;
+}
+
+.right-area a{
+	color: #6B7189;
+	margin: 0;
+	padding: 12px 15px;
+	text-decoration: none;
+}
+.right-area a:last-child{
+	color: #fff;
+	background-color: #14A4FA;
+}
+.right-area a i{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.right-area img{
+	width: 30px; height: 30px;
+	margin-right: 10px;
+}
+.sidebar{
+	background-color: #1F2638;
+	position: fixed;
+	margin-top: 40px;
+	padding:0;
+	height: 100%;
+	width: 200px;
+	overflow: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none; 
+}
+::-webkit-scrollbar { 
+	display: none; /* Chrome Safari */
+}
+.sidebar a{
+	color:#6B7189;
+	display: block;
+	width: 100%;
+	line-height: 50px;
+	padding-left: 10%;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+.sidebar a:hover{
+	background-color: #14A4FA;
+	color: #F7F9FD;
+}
+
+.sidebar a i{
+	margin-right: 10px;
+}
+.sidebar a:first-child i{
+	margin-right: 5px;
+}
+
+.sidebar section:first-child a{
+	background-color: #F67756;
+	color:#F7F9FD;
+	border-color: #F67756;
+	padding-left: 0.75rem;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-weight: 600;
+}
+.sidebar section:last-child{
+	padding: 5% 10%;
+	margin-bottom: 5rem;
+	border: none;
+	color:#6B7189;
+	margin-top: 1rem;
+}
+.sidebar section:last-child span{
+	font-weight: 600;
+}
+.sidebar section:last-child i{
+	padding-right: 10px;
+}
+.sidebar section{
+	border-bottom: 5px solid #191F2D;
+}
+
+.sidebar section:first-child{
+	margin-top: 1rem;
+	padding: 1.5rem;
+}
+
+.content{
+	margin-left: 200px;
+	padding-top: 40px;
+	height: 100vh;
+	overflow: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none; 
+	
+}
+.top-area{
+	background-color: #EEF1F8;
+	padding-top:1rem;
+}
+.title-top-area{
+	color: #54596D;
+	font-weight: 600;
+	padding: 3px 1rem;
+	border-bottom: 1px solid #DDE0E5;
+}
+.browse-titles {
+	padding:1rem;
+}
+.browse-titles a{
+	padding:3px 15px;
+	color: #B3B9D2;
+	text-decoration: none;
+}
+
+.browse-titles a:hover{
+	color: #97B2CD;
+}
+
+.browse-titles a.active{
+	background-color: #97B2CD;
+	color: #EEF1F8;
+	border-radius: 12px;
+}
+.search-button{
+	float: right;
+}
+.search-button input{
+	border: 2px solid #B3B9D2;
+	border-radius: 12px;
+	padding-left: 15px;
+	padding-right: 35px;
+}
+
+.fa-circle{
+	font-size: 5px;
+	padding-right: 5px;
+}
+
+.section2 a{
+	padding-left: 0;
+	margin: 0;
+	color:#6B7189;
+}
+.section2 p{
+	padding-left: 10%;
+	margin: 0;
+}
+.section2 p i{
+	margin-right: 10px;
+}
+.section2 p:hover{
+	background-color: #14A4FA;
+	color: #F7F9FD;
+}
+
+.container{
+	padding-top: 2rem;
+	margin-bottom: 6rem;
+}
+.card-browse{
+	width: 100%;
+	border: none;
+}
+.card-body{
+	margin-left: 0;
+	padding-left: 5px;
+}
+.card-browse .card-img-top{
+	height: 350px;
+}
+.overcard{
+	width: 100%;
+	height: 350px;
+	background-color: rgba(0, 0, 0, 0.8);
+	position: absolute;
+	visibility: hidden;
+}
+.options-browse{
+	position: absolute;
+	right: 0;
+	margin: 10px;
+	display: none;
+}
+.options-browse a{
+	color: #5f6d7a;
+}
+
+.options-browse a:hover{
+	color: #007bff;
+}
+
+
+.card-browse:hover .overcard {
+	visibility: visible;
+}
+.card-browse:hover .options-browse {
+	display: block;
+}
+.btnSeeBook{
+	display: inline;
+	border-color: #F67756;
+	color: #F67756;
+}
+.btnSeeBook:hover{
+	border-color: #F67756;
+	color: #F7F9FD;
+	background-color: #F67756;
+}
+
+.btnCarrito{
+	border-color: #14A4FA;
+	color: #14A4FA;
+}
+.btnCarrito:hover{
+	border-color: #14A4FA;
+	background-color: #14A4FA;
+	color: #F7F9FD;
+}
+.card-body h1{
+	font-size: 17px;
+	color: #53586A;
+	margin-bottom: 2px;
+}
+.card-body h2{
+	font-size: 15px;
+	color: #79828B;
+}
+.card-body h3{
+	font-size: 14px;
+	color: #79828B;
+}
+.card-body .rate{
+	font-size: 14px;
+	color: #FDAA05;
+}
+.image-buybooks img{
+	width: 100%;
+	height: 350px;
+}
+.buybooks-prices{
+	border: 1px solid #DDE0E5;
+	border-radius: 5px;
+	padding: 15px;
+}
+.imagecart{
+	width: 50%;
+	height: 150px;
+}
+.cart-section{
+	border-bottom: 1px solid #DDE0E5;
+}
+.cart-pay{
+	position: fixed;
+	right: 0;
+	border: 2px solid #DDE0E5;
+	border-radius: 5px;
+	padding: 15px;
+	margin-right: 10px;
+}
+.options-buybooks a{
+	color: #5f6d7a;
+	text-decoration: none;
+}
+.options-buybooks a:hover{
+	color: #007bff;
+	text-decoration: none;
+}
+.red{
+	color: #E24E64;
+}
+.yellow{
+	color: #F1AA06;
+}
+.blue{
+	color: #07BFD4;
+}
+.purple{
+	color: #7E7BCB;
+}
+.star{
+	color: #FDAA05;
+}
+.list-icons {
+	color: #007bff
+}
+
+.field-tip {
+    position:relative;
+    cursor:help;
+}
+.field-tip a{
+	margin-right: 5px;
+	font-size: 16px;
+}
+.field-tip .tip-content {
+	position:absolute;
+	top:-35px; /* - top padding */
+	right:9999px;
+	width:200px;
+	margin-right:-185px; /* width + left/right padding */
+	padding:10px;
+	color:#fff;
+	background:#007bff;
+	
+}
+/* <http://css-tricks.com/snippets/css/css-triangle/> */
+.field-tip .tip-content:before {
+	content:' '; /* Must have content to display */
+	position:absolute;
+	top:50%;
+	left:-16px; /* 2 x border width */
+	width:0;
+	height:0;
+	margin-top:-8px; /* - border width */
+	border:8px solid transparent;
+	border-right-color:#007bff;
+}
+.field-tip:hover .tip-content {
+	right:-20px;
+	opacity:1;
+	z-index: 2;
+}
+.field-tip:hover a{
+	z-index: 1;
+	color:#007bff;
+}
+
+.tip-content:hover {
+	display:none;
+}
+
