@@ -28,11 +28,11 @@
                 <span class="tip-content">Agregar a mi lista de libros que actualmente estas leyendo.</span>
             </span>
             <span class="field-tip">
-                <a href="<?php echo ($wishlist)? site_url("/deleteToWishlist?idWishlist=".$wishlist['id']."&idBook=".$books['id']) : site_url("/addToWishlist?idBook=".$books['id']."")?>"><i class="fas fa-star <?php echo ($wishlist)?'list-icons':''; ?>"></i></a>
+                <a href="<?php echo ($favourite)? site_url("/deleteToFavourite?idFavourite=".$favourite['id']."&idBook=".$books['id']) : site_url("/addToFavourite?idBook=".$books['id']."")?>"><i class="fas fa-star <?php echo ($favourite)?'list-icons':''; ?>"></i></a>
                 <span class="tip-content">Agregar a mi lista de libros favoritos.</span>
             </span>
             <span class="field-tip">
-                <a href="<?php echo ($favourite)? site_url("/deleteToFavourite?idFavourite=".$favourite['id']."&idBook=".$books['id']) : site_url("/addToFavourite?idBook=".$books['id']."")?>"><i class="fas fa-list <?php echo ($favourite)?'list-icons':''; ?>"></i></a>
+                <a href="<?php echo ($wishlist)? site_url("/deleteToWishlist?idWishlist=".$wishlist['id']."&idBook=".$books['id']) : site_url("/addToWishlist?idBook=".$books['id']."")?>"><i class="fas fa-list <?php echo ($wishlist)?'list-icons':''; ?>"></i></a>
                 <span class="tip-content">Agregar a mi lista de libros deseados.</span>
             </span>
         </div>

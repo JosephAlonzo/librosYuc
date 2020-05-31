@@ -11,7 +11,7 @@ class UserController extends BaseController
 
     public function index(){
         if ($this->login()){
-		    return redirect()->to('/proyectolibreria'); 
+		    return redirect()->to(site_url('/')); 
         }
         else{
             echo '<div class="alert alert-danger" role="alert">

@@ -37,13 +37,13 @@ class WishListController extends BaseController
 			'id_book'=>$idBook,
 		);
 		$this->wishlistModel->insert($data);
-		return redirect()->to('/proyectolibreria/index.php/seeBook?idBook='.$idBook); 
+		return redirect()->to(site_url('/seeBook?idBook='.$idBook)); 
 	}
 	
 	public function deleteToWishlist(){
 		$idBook = $this->request->getPostGet('idBook');
 		$idWishlist = $this->request->getPostGet('idWishlist');
 		$this->wishlistModel->delete($idWishlist);
-		return redirect()->to('/proyectolibreria/index.php/seeBook?idBook='.$idBook); 
+		return redirect()->to(site_url('/seeBook?idBook='.$idBook)); 
 	}
 }

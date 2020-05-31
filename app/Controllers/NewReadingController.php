@@ -37,14 +37,14 @@ class newReadingController extends BaseController
 			'id_book'=>$idBook,
 		);
 		$this->nowreadingModel->insert($data);
-		return redirect()->to('/proyectolibreria/index.php/seeBook?idBook='.$idBook); 
+		return redirect()->to( site_url('/seeBook?idBook='.$idBook)); 
     }
     
     public function deleteToNowReading(){
 		$idBook = $this->request->getPostGet('idBook');
 		$idNowReading = $this->request->getPostGet('idNowReading');
 		$this->nowreadingModel->delete($idNowReading);
-		return redirect()->to('/proyectolibreria/index.php/seeBook?idBook='.$idBook); 
+		return redirect()->to( site_url('/seeBook?idBook='.$idBook)); 
 	}
 
 }

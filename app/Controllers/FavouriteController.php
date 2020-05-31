@@ -36,14 +36,14 @@ class FavouriteController extends BaseController
 			'id_book'=>$idBook,
 		);
 		$this->favouriteModel->insert($data);
-		return redirect()->to('/proyectolibreria/index.php/seeBook?idBook='.$idBook); 
+		return redirect()->to( site_url('/seeBook?idBook='.$idBook)); 
     }
     
 	public function deleteToFavourite(){
 		$idBook = $this->request->getPostGet('idBook');
 		$idFavorite = $this->request->getPostGet('idFavourite');
 		$this->favouriteModel->delete($idFavorite);
-		return redirect()->to('/proyectolibreria/index.php/seeBook?idBook='.$idBook); 
+		return redirect()->to( site_url('/seeBook?idBook='.$idBook)); 
 	}
 
 }
