@@ -20,6 +20,7 @@ class WishListController extends BaseController
 		$id = $this->session->get('id');
 		$users = array('users'=> $this->userModel->find($id));
 		$books = array('books'=> $this->wishlistModel
+										->select('wishlist.id as wishlist, nombre, foto, autor, books.id, rate')
 										->where('id_user', $id)
 										->join('books', 'books.id = wishlist.id_book')
 										->find()
@@ -29,6 +30,7 @@ class WishListController extends BaseController
     }
 
     public function addToWishlist(){
+		$uri = $this->request->getPostGet('uri');
 		$idBook = $this->request->getPostGet('idBook');
 		$id = $this->session->get('id');
 		
@@ -37,13 +39,28 @@ class WishListController extends BaseController
 			'id_book'=>$idBook,
 		);
 		$this->wishlistModel->insert($data);
-		return redirect()->to(site_url('/seeBook?idBook='.$idBook)); 
+		if($uri == 'seeBook'){
+			$redirect = '/seeBook?idBook='.$idBook;
+		}
+		else{
+			$redirect = '/'.$uri;
+		}
+		return redirect()->to( site_url($redirect));
 	}
 	
 	public function deleteToWishlist(){
+		$uri = $this->request->getPostGet('uri');
 		$idBook = $this->request->getPostGet('idBook');
 		$idWishlist = $this->request->getPostGet('idWishlist');
 		$this->wishlistModel->delete($idWishlist);
-		return redirect()->to(site_url('/seeBook?idBook='.$idBook)); 
+
+		if($uri == 'seeBook')
+		{
+			$redirect = '/seeBook?idBook='.$idBook;
+		}
+		else{
+			$redirect = '/'.$uri;
+		}
+		return redirect()->to( site_url($redirect)); 
 	}
 }

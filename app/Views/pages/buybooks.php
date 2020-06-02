@@ -1,9 +1,9 @@
 <div class="container">
-<div class="row">
+<div class="row see-book">
     <div class="col-md-3 image-buybooks">
         <img src="<?php echo base_url("public/src/img/".$books['foto']."")?>" alt="imagebook">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
         <h1><?php echo $books['nombre'] ?></h1>
         <h2>por <?php echo $books['autor'] ?></h2>
         <p class="rate">
@@ -39,10 +39,10 @@
         </div>
         <?php }?>
     </div>
-    <div class="col-md-3 buybooks-prices">
-        <h3>Precio: </h3>
-        <h4><?php echo '$'.$books['precio']?></h4>
-        <button type="button" class="btn btn-outline-primary btnCarrito mb-1">Agregar al carrito</button>
-        <button type="button" class="btn btn-outline-warning btnSeeBook">Comprar libro</button>
+    <div class="col-md-3 cart-pay">
+        <h2>Precio: </h2>
+        <h3><?php echo '$'.$books['precio']?></h3>
+        <a type="button" href="<?php echo site_url("cart/add?idBook=".$books['id']."")?>" class="btn btn-outline-primary btnCarrito ">Agregar al carrito</a>
+        <a type="button" href="<?php echo site_url("cart/add?idBook=".$books['id']."")?>" class="btn btn-outline-warning btnSeeBook">Comprar libro</a>
     </div>
 </div>

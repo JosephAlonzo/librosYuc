@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 //Book controller
 $routes->get('/', 'BookController::index');
+$routes->get('/admin', 'BookController::book');
 $routes->get('/buybooks', 'BookController::buybooks');
 $routes->get('/browse', 'BookController::index');
 $routes->get('/cart', 'BookController::cart');
@@ -66,6 +67,21 @@ $routes->get('/history', 'HistoryController::history');
 $routes->get('/login', 'UserController::index');
 $routes->post('/login', 'UserController::index');
 $routes->get('/logout', 'UserController::logout');
+$routes->get('/users', 'UserController::show');
+$routes->post('/users/add', 'UserController::add');
+$routes->post('/users/update', 'UserController::update');
+$routes->post('/users/delete', 'UserController::delete');
+
+$routes->get('/books', 'BookController::show');
+$routes->post('/books/add', 'BookController::add');
+$routes->post('/books/update', 'BookController::update');
+$routes->post('/books/delete', 'BookController::delete');
+
+$routes->get('/cart/show', 'CartController::show');
+$routes->get('/cart/add', 'CartController::add');
+$routes->get('/cart/update', 'CartController::update');
+$routes->get('/cart/delete', 'CartController::delete');
+
 
 
 /**

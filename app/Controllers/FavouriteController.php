@@ -19,6 +19,7 @@ class FavouriteController extends BaseController
 		$id = $this->session->get('id');
 		$users = array('users'=> $this->userModel->find($id));
 		$books = array('books'=> $this->favouriteModel
+										->select('favourite.id as favorite, nombre, foto, autor, books.id, rate')
 										->where('id_user', $id)
 										->join('books', 'books.id = favourite.id_book')
 										->find()
@@ -28,6 +29,7 @@ class FavouriteController extends BaseController
     }
 
     public function addToFavourite(){
+		$uri = $this->request->getPostGet('uri');
 		$idBook = $this->request->getPostGet('idBook');
 		$id = $this->session->get('id');
 		
@@ -36,14 +38,28 @@ class FavouriteController extends BaseController
 			'id_book'=>$idBook,
 		);
 		$this->favouriteModel->insert($data);
-		return redirect()->to( site_url('/seeBook?idBook='.$idBook)); 
+		if($uri == 'seeBook'){
+			$redirect = '/seeBook?idBook='.$idBook;
+		}
+		else{
+			$redirect = '/'.$uri;
+		}
+		return redirect()->to( site_url($redirect));
     }
     
 	public function deleteToFavourite(){
+		$uri = $this->request->getPostGet('uri');
 		$idBook = $this->request->getPostGet('idBook');
 		$idFavorite = $this->request->getPostGet('idFavourite');
 		$this->favouriteModel->delete($idFavorite);
-		return redirect()->to( site_url('/seeBook?idBook='.$idBook)); 
+		if($uri == 'seeBook')
+		{
+			$redirect = '/seeBook?idBook='.$idBook;
+		}
+		else{
+			$redirect = '/'.$uri;
+		}
+		return redirect()->to( site_url($redirect)); 
 	}
 
 }

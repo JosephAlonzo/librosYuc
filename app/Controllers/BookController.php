@@ -15,9 +15,13 @@ class BookController extends BaseController
 	public $nowreadingModel = null;
 	public $wishlistModel   = null;
 	public $favouriteModel  = null;
+	public $nowreading = null;
+	public $wishlist = null;
+	public $favourite = null;
 	public $historyModel    = null;
 	public $request = null;
 	public $users = [];
+	public $books = null;
 	
 	public function __construct(){
 		$this->userModel = new UserModel($db);
@@ -26,6 +30,7 @@ class BookController extends BaseController
 		$this->wishlistModel = new WishlistModel($db);
 		$this->favouriteModel = new FavouriteModel($db);
 		$this->historyModel = new HistoryModel($db);
+		$this->books = $this->bookModel->findAll();	
 		parent::__construct();
 		$this->request = \Config\Services::request();
 		$id = $this->session->get('id');
@@ -35,11 +40,43 @@ class BookController extends BaseController
 		}
 		else {
 			$this->users = array('users'=> $this->userModel->find($id));
+			$this->nowreading = $this->nowreadingModel
+				->select('id_book, nowreading.id')
+				->join('books', 'books.id = nowreading.id_book' )
+				->where('id_user',$this->users['users']['id'])
+				->find();
+			$this->wishlist = $this->wishlistModel
+				->select('id_book, wishlist.id')
+				->join('books', 'books.id = wishlist.id_book' )
+				->where('id_user',$this->users['users']['id'])
+				->find();
+			$this->favourite = $this->favouriteModel
+				->select('id_book, favourite.id')
+				->join('books', 'books.id = favourite.id_book' )
+				->where('id_user',$this->users['users']['id'])
+				->find();
+			foreach ($this->books as $key => $book){
+				foreach ($this->nowreading as $value){
+					($value['id_book'] == $book['id'])? $this->books[$key]['nowreading'] = $value['id'] : '';
+				}
+				foreach ($this->wishlist as $value){
+					($value['id_book'] == $book['id'])?	$this->books[$key]['wishlist'] = $value['id'] : '';
+				}
+				foreach ($this->favourite as $value){
+					($value['id_book'] == $book['id'])? $this->books[$key]['favorite'] = $value['id'] : '';
+				}
+			}
+		
 		}
 	}
 	public function index()
 	{	
-		$books = array('books'=> $this->bookModel->findAll());	
+		if(isset($this->users) and !empty($this->users)){
+			if($this->users['users']['tipo'] == 1){
+			return redirect()->to(site_url('/users')); 
+			}
+		}
+		$books = array('books'=> $this->books);	
 		$structure = view('includes/header',$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
@@ -48,26 +85,37 @@ class BookController extends BaseController
 		$structure = view('includes/header') . view('includes/nav') . view('pages/buybooks') . view('includes/footer');
 		return $structure;
     }
-    public function cart()
-	{
-        $structure = view('includes/header', $this->users) . view('pages/cart') . view('includes/footer');
-		return $structure;
-	}
-
+   
 	
 	public function allBooks()
 	{	
-		$books = array('books'=> $this->bookModel->findAll());
-		
+		$books = array('books'=> $this->books);	
 		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
-
+	public function addlists($books){
+		foreach ($books as $key => $book){
+			foreach ($this->nowreading as $value){
+				($value['id_book'] == $book['id'])? $books[$key]['nowreading'] = $value['id'] : '';
+			}
+			foreach ($this->wishlist as $value){
+				($value['id_book'] == $book['id'])?	$books[$key]['wishlist'] = $value['id'] : '';
+			}
+			foreach ($this->favourite as $value){
+				($value['id_book'] == $book['id'])? $books[$key]['favorite'] = $value['id'] : '';
+			}
+		}
+		return $books;
+	}
 	public function mostRecent()
 	{	
 		$books = $this->bookModel
 				->orderBy('added_at', 'ASC')
 				->findAll();
+		
+		if(!empty($this->users)){
+			$books = $this->addlists($books);
+		}
 		$books = array('books'=> $books);
 		
 		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
@@ -79,6 +127,9 @@ class BookController extends BaseController
 		$books = $this->bookModel
 				->orderBy('rate', 'DESC')
 				->findAll();
+		if(!empty($this->users)){
+			$books = $this->addlists($books);
+		}
 		$books = array('books'=> $books);
 		
 		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
@@ -87,12 +138,15 @@ class BookController extends BaseController
 
 	public function mostRead()
 	{	
-		$nowreading = $this->nowreadingModel
+		$books = $this->nowreadingModel
 							->select( '* , count(id_book) as count ')
 							->join('books', 'books.id = nowreading.id_book')
 							->groupBy("id_book")
 							->findAll(10);
-		$books = array('books'=> $nowreading);
+		if(!empty($this->users)){
+			$books = $this->addlists($books);
+		}
+		$books = array('books'=> $books);
 		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
 		return $structure;
 	}
@@ -102,6 +156,9 @@ class BookController extends BaseController
 		$books = $this->bookModel
 				->orderBy('rate', 'DESC')
 				->findAll(10);
+		if(!empty($this->users)){
+			$books = $this->addlists($books);
+		}
 		$books = array('books'=> $books);
 		
 		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
@@ -113,6 +170,9 @@ class BookController extends BaseController
 		$books = $this->bookModel
 				->like('genero', 'novela')
 				->findAll();
+		if(!empty($this->users)){
+			$books = $this->addlists($books);
+		}
 		$books = array('books'=> $books);
 		
 		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
@@ -124,6 +184,9 @@ class BookController extends BaseController
 		$books = $this->bookModel
 				->notLike('genero', 'ficcion')
 				->findAll();
+		if(!empty($this->users)){
+			$books = $this->addlists($books);
+		}
 		$books = array('books'=> $books);
 		
 		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
@@ -135,6 +198,9 @@ class BookController extends BaseController
 		$books = $this->bookModel
 				->where('precio', 0)
 				->findAll();
+		if(!empty($this->users)){
+			$books = $this->addlists($books);
+		}
 		$books = array('books'=> $books);
 		
 		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
@@ -147,6 +213,9 @@ class BookController extends BaseController
 		$books = $this->bookModel
 				->like('nombre', $search)
 				->findAll();
+		if(!empty($this->users)){
+			$books = $this->addlists($books);
+		}
 		$books = array('books'=> $books);
 		
 		$structure = view('includes/header' ,$this->users) . view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
@@ -203,6 +272,80 @@ class BookController extends BaseController
 		}
 		$this->historyModel->save($data);
 	}
+
 	
-	
+	public function show(){
+        if(empty($this->users)){
+            return redirect()->to(site_url('/'));
+		}
+        if($this->users['users']['tipo'] == '0'){
+            return redirect()->to(site_url('/'));
+        }
+        else{
+            $Allbooks = array('books'=> $this->bookModel
+                                                ->select('id, nombre, autor,  genero, rate , descripcion, precio, foto')    
+                                                ->findAll());
+            $structure = view('includes/header',$this->users) . view('pages/bookform',$Allbooks) . view('includes/footer');
+            return $structure;
+        }
+    }
+    public function add(){
+        $data = array(
+			'nombre'=>$this->request->getPostGet('nombre'),
+			'autor'=>$this->request->getPostGet('autor'),
+			'genero'=>$this->request->getPostGet('genero'),
+			'rate'=>$this->request->getPostGet('rate'),
+			'descripcion'=>$this->request->getPostGet('descripcion'),
+			'precio'=>$this->request->getPostGet('precio'),
+            'foto' => $this->subirArchivo(),
+		);
+        $this->bookModel->insert($data);
+        
+        return redirect()->to(site_url('/books')); 
+    }
+    public function update(){
+        $id = $this->request->getPostGet('id');
+        $data = array(
+			'nombre'=>$this->request->getPostGet('nombre'),
+			'autor'=>$this->request->getPostGet('autor'),
+			'genero'=>$this->request->getPostGet('genero'),
+			'rate'=>$this->request->getPostGet('rate'),
+			'descripcion'=>$this->request->getPostGet('descripcion'),
+			'precio'=>$this->request->getPostGet('precio')
+        );
+        $foto = $this->subirArchivo();
+        if($foto != ''){
+            $data['foto'] = $foto;
+        }
+        $this->bookModel->update($id, $data);
+
+        return redirect()->to(site_url('/books')); 
+    }
+    public function delete(){
+        $id = $this->request->getPostGet('id');
+        $this->bookModel->delete($id);
+
+        return redirect()->to(site_url('/books')); 
+    }
+
+    function subirArchivo(){
+        try{
+		$dir_subida = $_SERVER['DOCUMENT_ROOT'] . '/proyectolibreria/public/src/img/';
+        $fichero_subido = $dir_subida . basename($_FILES['foto']['name']);
+        $respuesta =  move_uploaded_file($_FILES['foto']['tmp_name'], $fichero_subido)  ;
+        $this->resizeImage($fichero_subido);
+        $respuesta = ( $respuesta ) ?  basename($_FILES['foto']['name']) :  '';
+        }
+        catch(Exception $e){
+            $respuesta = '';
+        }
+		return $respuesta;
+    }
+    public function resizeImage($ruta){
+        $image = \Config\Services::image();
+        $image = \Config\Services::image()
+        ->withFile($ruta)
+        ->resize(350, 300, true, 'height')
+        ->save($ruta);
+    }
 }

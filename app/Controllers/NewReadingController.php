@@ -20,8 +20,9 @@ class newReadingController extends BaseController
 		$id = $this->session->get('id');
 		$users = array('users'=> $this->userModel->find($id));
 		$books = array('books'=> $this->nowreadingModel
-										->where('id_user', $id)
+										->select('nowreading.id as nowreading, nombre, foto, autor, books.id, rate')
 										->join('books', 'books.id = nowreading.id_book')
+										->where('id_user', $id)
 										->find()
 					);
         $structure = view('includes/header' ,$users). view('includes/nav')  . view('pages/browse', $books) . view('includes/footer');
@@ -30,21 +31,36 @@ class newReadingController extends BaseController
     
     public function addToNowReading(){
 		$idBook = $this->request->getPostGet('idBook');
+		$uri = $this->request->getPostGet('uri');
 		$id = $this->session->get('id');
-		
 		$data = array(
 			'id_user'=>$id,
 			'id_book'=>$idBook,
 		);
 		$this->nowreadingModel->insert($data);
-		return redirect()->to( site_url('/seeBook?idBook='.$idBook)); 
+		if($uri == 'seeBook'){
+			$redirect = '/seeBook?idBook='.$idBook;
+		}
+		else{
+			$redirect = '/'.$uri;
+		}
+		return redirect()->to(site_url($redirect));
     }
     
     public function deleteToNowReading(){
+		$uri = $this->request->getPostGet('uri');
 		$idBook = $this->request->getPostGet('idBook');
 		$idNowReading = $this->request->getPostGet('idNowReading');
 		$this->nowreadingModel->delete($idNowReading);
-		return redirect()->to( site_url('/seeBook?idBook='.$idBook)); 
+
+		if($uri == 'seeBook')
+		{
+			$redirect = '/seeBook?idBook='.$idBook;
+		}
+		else{
+			$redirect = '/'.$uri;
+		}
+		return redirect()->to( site_url($redirect)); 
 	}
 
 }
