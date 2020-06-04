@@ -88,10 +88,7 @@ class UserController extends BaseController
         return false;
     }
     public function show(){
-        if(empty($this->users)){
-            return redirect()->to(site_url('/'));
-        }
-        if($this->users['users']['tipo'] == '0'){
+        if(empty($this->users) OR $this->users['users']['tipo'] == '0'){
             return redirect()->to(site_url('/'));
         }
         else{
@@ -146,7 +143,7 @@ class UserController extends BaseController
 
     function subirArchivo(){
         try{
-            $dir_subida = $_SERVER['DOCUMENT_ROOT'] . '/proyectolibreria/public/src/img/';
+            $dir_subida = $_SERVER['DOCUMENT_ROOT'] . '/proyectoLibreria/public/src/img/';
             $fichero_subido = $dir_subida . basename($_FILES['foto']['name']);
             $respuesta =  move_uploaded_file($_FILES['foto']['tmp_name'], $fichero_subido)  ;
             $this->resizeImage($fichero_subido);
